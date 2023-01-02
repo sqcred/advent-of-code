@@ -29,7 +29,7 @@ public class Input {
 
     @SneakyThrows
     public String asString(){
-        return Runner.class.getClassLoader().getResourceAsStream(file).toString();
+        return new String(Runner.class.getClassLoader().getResourceAsStream(file).readAllBytes());
     }
 
 }
