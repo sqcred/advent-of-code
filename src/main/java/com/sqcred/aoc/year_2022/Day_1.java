@@ -38,7 +38,7 @@ public class Day_1 implements Puzzle {
             currentAmount += Integer.parseInt(line);
         }
 
-        int biggestIntElf = 0;
+        /*int biggestIntElf = 0;
         int biggestInt = 0;
 
         for (Integer elf : amount.keySet()) {
@@ -47,9 +47,29 @@ public class Day_1 implements Puzzle {
                 biggestInt = amountInt;
                 biggestIntElf = elf;
             }
+        }*/
+
+        //return "Elf " + biggestIntElf + " has the most calories with: " + biggestInt + " calories";
+
+        int top3amount = 0;
+
+        for(int i = 0; i < 3; i++){
+            int biggestInt = 0;
+            int biggestElf = 0;
+
+            for (Integer elf : amount.keySet()) {
+                int amountInt = amount.get(elf);
+                if(amountInt > biggestInt){
+                    biggestInt = amountInt;
+                    biggestElf = elf;
+                }
+            }
+
+            amount.remove(biggestElf);
+            top3amount += biggestInt;
         }
 
-        return "Elf " + biggestIntElf + " has the most calories with: " + biggestInt + " calories";
+        return "Top 3 calories combined are: " + top3amount;
     }
 
 }
